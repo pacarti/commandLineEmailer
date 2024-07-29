@@ -7,7 +7,7 @@ import sys, re
 from getpass import getpass
 
 
-# TODO: To implement the functionality that the domain matches only protonmail. 
+# To implement the functionality that the domain matches only protonmail. 
 emailRegex = re.compile(r'''
     (
         [a-zA-Z0-9._%+-]+     # username
