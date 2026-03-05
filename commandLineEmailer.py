@@ -70,18 +70,23 @@ newMessageButton.click()
 
 sleep(1)
 
-recipientEmailAddressField = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[placeholder='To']")))
+# recipientEmailAddressField = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[placeholder='To']")))
+recipientEmailAddressField = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[data-testid='composer:to']")))
+# recipientEmailAddressField = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".composer-addresses-input-container")))
+# recipientEmailAddressField.click()
 recipientEmailAddressField.send_keys(recipientEmailAddress)
 
 # subject = browser.find_element(by = By.XPATH, value="input[placeholder='Subject']")
-subject = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[placeholder='Subject']")))
+# subject = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[placeholder='Subject']")))
+subject = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[data-testid='composer:subject']")))
 subject.send_keys('Future')
 
-iframe = browser.find_elements(By.TAG_NAME, 'iframe')[0]
+iframe = browser.find_elements(By.TAG_NAME, 'iframe')[1]
 browser.switch_to.frame(iframe)
 
 
 messageField = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, 'rooster-editor')))
+# messageField = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[id='rooster-editor']")))
 
 
 messageField.clear()
@@ -92,8 +97,7 @@ messageField.send_keys('Automating tasks with Python is the future!')
 browser.switch_to.default_content() # Leave iframe
 
 # sendButton = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.LINK_TEXT, 'Send'))) 
-sendButton = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[4]/div/div/div/footer/div/div[1]/button[1]'))) 
-
+sendButton = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "button[data-testid='composer:send-button']"))) 
 
 
 sendButton.click()
